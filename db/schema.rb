@@ -10,9 +10,54 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 2020_10_10_152116) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "deliveries", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "drone_id", null: false
+    t.datetime "delivery_time"
+    t.string "delivery_address"
+    t.text "description"
+    t.integer "weight"
+    t.string "status"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["drone_id"], name: "index_deliveries_on_drone_id"
+    t.index ["user_id"], name: "index_deliveries_on_user_id"
+  end
+
+  create_table "drones", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "model"
+    t.integer "autonomy"
+    t.integer "maximum_distance"
+    t.integer "carry_capacity"
+    t.integer "delivery_price"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_drones_on_user_id"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "name"
+    t.string "phone_number"
+    t.text "presentation"
+    t.string "address"
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
+  add_foreign_key "deliveries", "drones"
+  add_foreign_key "deliveries", "users"
+  add_foreign_key "drones", "users"
 end
