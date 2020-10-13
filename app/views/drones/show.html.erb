@@ -1,0 +1,43 @@
+<div class="container">
+
+  <h1><%= @drone.model %></h1>
+
+
+<div>
+  <img src="" alt="">
+  <h4>Caractérisitiques du drone</h4>
+  <ul>
+    <li>
+      Model <%=@drone.model%>
+    </li>
+    <li>
+      Autonomie <%=@drone.autonomy%> h
+    </li>
+    <li>
+      Portée <%=@drone.maximum_distance%> km
+    </li>
+    <li>
+      Capacité <%=@drone.carry_capacity%> kg
+    </li>
+  </ul>
+
+</div>
+</div>
+
+<div>
+ <%= image_tag  "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar" %>
+ <p> proposé par<%= @drone.user.name %></p>
+
+ <h4> Réservation d'une livraison </h4>
+
+ <p>Adresse de départ <%=current_user.address%></p>
+
+ <%= simple_form_for [@drone, @delivery] do |f| %>
+  <%= f.input :delivery_address %>
+  <%= f.input :delivery_time %>
+  <p>Prix : <%= @drone.delivery_price %>€</p>
+  <%= f.button :submit, class: 'btn btn-primary' %>
+<% end %>
+
+
+</div>

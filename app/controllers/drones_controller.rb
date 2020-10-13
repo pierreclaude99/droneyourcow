@@ -6,20 +6,21 @@ class DronesController < ApplicationController
     end
 
     def show
+      @delivery = Delivery.new
     end
 
     def new
       @drone = Drone.new
-    end 
+    end
 
     def create
       @drone = Drone.new(params_drone)
       if @drone.save
         redirect_to drone_path(@drone)
-      else 
+      else
         render :new
       end
-    end 
+    end
 
     def edit
     end
@@ -30,8 +31,8 @@ class DronesController < ApplicationController
       redirect_to drone_path(@drone)
     end
 
-    def destroy 
-      @drone.destroy 
+    def destroy
+      @drone.destroy
 
       redirect_to drones_path
     end

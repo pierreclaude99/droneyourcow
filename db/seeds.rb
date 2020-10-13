@@ -5,3 +5,8 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+user = User.first
+ademola = Drone.new(model: 'XTR', autonomy: 4,  maximum_distance: 100, carry_capacity: 15, delivery_price: 50)
+ademola.user = user
+ademola.save!
