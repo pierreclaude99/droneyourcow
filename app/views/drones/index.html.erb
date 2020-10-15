@@ -1,0 +1,27 @@
+<section id="drones">
+  <div class="container">
+    <div>
+      <% @drones.each do |drone| %> 
+       <div class="col-12 col-sm-6 col-lg-8 mx-auto my-4">
+        <%= link_to drone_path(drone), class: "text-decoration-none" do %>
+
+         <div class="card rounded p-3 box-shadow flex-md-row">
+         <%= image_tag "image.png" %>
+         <div class="pl-3 d-flex flex-column">
+           <h3><%= drone.model %></h3>
+           <ul class="list-unstyled list-inline">
+             <li class="list-inline-item"><%= drone.autonomy %> min -</li> 
+             <li class="list-inline-item"><%= drone.maximum_distance %> km -</li>
+             <li class="list-inline-item"><%= drone.carry_capacity %> kg</li>   
+           </ul>
+           <p class="h3 list-inline-item"><%= drone.delivery_price %> €</p>
+           
+           <p><%= image_tag "avatar.png", width: "32", height: "32" %> Maria Goncalves</p>
+           </div>
+          </div>
+          <% end %>
+        </div>
+      <% end %>
+     </div>
+  </div>
+</section> 
