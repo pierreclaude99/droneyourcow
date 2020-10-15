@@ -14,7 +14,9 @@ class DronesController < ApplicationController
     end
 
     def create
+
       @drone = Drone.new(params_drone)
+      @drone.user_id = current_user.id
       if @drone.save
         redirect_to drone_path(@drone)
       else
@@ -40,7 +42,7 @@ class DronesController < ApplicationController
     private
 
     def params_drone
-      params.require(:drone).permit(:model, :autonomy, :maximum_distance, :carry_capacity, :delivery_price)
+      params.require(:drone).permit(:model, :autonomy, :maximum_distance, :carry_capacity, :delivery_price, :photo)
     end
 
     def set_drone
