@@ -1,3 +1,18 @@
+<div class="position-relative overflow-hidden p-3 p-md-5 m-0 text-center bg-light banner-hero text-white">
+      <div class="col-md-5 p-lg-5 mx-auto">
+        <h1> <b> Drone your cow</b></h1>
+        <p class="lead font-weight-normal">Cow delivery wherever you want !</p>
+
+                  <%= link_to "Ajouter un drone",  new_drone_path, class: "btn btn-primary btn-lg rounded-lg btn-block" %>
+
+      </div>
+      <div class="product-device box-shadow d-none d-md-block"></div>
+      <div class="product-device product-device-2 box-shadow d-none d-md-block"></div>
+</div>
+
+
+
+
 <section id="drones">
   <div class="container">
     <div>
@@ -22,6 +37,8 @@
                    <li class="list-inline-item"><%= drone.carry_capacity %> kg</li>
                  </ul>
                  <p class="h3 list-inline-item"><%= drone.delivery_price %> €</p>
+                <p><%= image_tag  "https://kitt.lewagon.com/placeholder/users/random", class: "avatar mr-2" %> Drone proposé par : <%= drone.user.name %></p>
+
               </div>
           </div>
         </div>
