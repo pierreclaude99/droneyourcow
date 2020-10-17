@@ -8,3 +8,4 @@ Rails.application.routes.draw do
     end
   resources :deliveries, only: [:index]
 end
+end
