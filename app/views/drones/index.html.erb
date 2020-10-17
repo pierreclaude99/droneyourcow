@@ -2,29 +2,31 @@
   <div class="container">
     <div>
       <% @drones.each do |drone| %>
-       <div class="col-12 col-sm-6 col-lg-8 mx-auto my-4">
+
         <%= link_to drone_path(drone), class: "text-decoration-none" do %>
+        <div class="col-6 mx-auto">
+          <div class="row d-flex align-items-center bg-light p-3 my-4 text-dark hover-card ">
+             <div class="col-4 p-0 m-0">
+                <% if drone.photo.attached? %>
+                    <%= cl_image_tag drone.photo.key, height: 200, width:200, crop: :fill, class: "rounded-lg img-fluid" %>
+                 <% else %>
+                 <%= cl_image_tag 'g8c8dewmyqqabmgffjsk1xbcnlcy', height: 200, width:200, crop: :fill, class: "rounded-lg img-fluid" %>
+                <% end %>
+              </div>
 
-         <div class="card rounded-lg p-3 shadow-sm flex-md-row text-dark">
-          <% if drone.photo.attached? %>
-              <%= cl_image_tag drone.photo.key, height: 170, width:170, crop: :fill %>
-           <% else %>
-           <%= cl_image_tag 'g8c8dewmyqqabmgffjsk1xbcnlcy', height: 170, width:170, crop: :fill  %>
-          <% end %>
-         <div class="pl-3 d-flex flex-column">
-           <h3><%= drone.model %></h3>
-           <ul class="list-unstyled list-inline">
-             <li class="list-inline-item"><%= drone.autonomy %> min -</li>
-             <li class="list-inline-item"><%= drone.maximum_distance %> km -</li>
-             <li class="list-inline-item"><%= drone.carry_capacity %> kg</li>
-           </ul>
-           <p class="h3 list-inline-item"><%= drone.delivery_price %> €</p>
-
-           <p><%= image_tag "avatar.png", width: "32", height: "32" %> Maria Goncalves</p>
-           </div>
+              <div class="col-8">
+                <h3 class="h2"><%= drone.model %></h3>
+                 <ul class="list-unstyled list-inline">
+                   <li class="list-inline-item"><%= drone.autonomy %> min -</li>
+                   <li class="list-inline-item"><%= drone.maximum_distance %> km -</li>
+                   <li class="list-inline-item"><%= drone.carry_capacity %> kg</li>
+                 </ul>
+                 <p class="h3 list-inline-item"><%= drone.delivery_price %> €</p>
+              </div>
           </div>
-          <% end %>
         </div>
+
+          <% end %>
       <% end %>
      </div>
   </div>
