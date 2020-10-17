@@ -5,13 +5,11 @@
     <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
     <div class="carousel-inner">
       <div class="carousel-item active">
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcS1pQNeVABvo4XgDn2K1e-NCrzOkyOkpMa1KAQTiv2o3t_N2faXsHR2NMJCpQK1RTbp4s-H5ERV&usqp=CAc" class="d-block w-50" alt="...">
-      </div>
-      <div class="carousel-item">
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcS1pQNeVABvo4XgDn2K1e-NCrzOkyOkpMa1KAQTiv2o3t_N2faXsHR2NMJCpQK1RTbp4s-H5ERV&usqp=CAc" class="d-block w-50" alt="...">
-      </div>
-      <div class="carousel-item">
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcS1pQNeVABvo4XgDn2K1e-NCrzOkyOkpMa1KAQTiv2o3t_N2faXsHR2NMJCpQK1RTbp4s-H5ERV&usqp=CAc" class="d-block w-50" alt="...">
+        <% if @drone.photo.attached? %>
+            <%= cl_image_tag @drone.photo.key, height: 300, width:400, crop: :fill %>
+         <% else %>
+         <%= cl_image_tag 'g8c8dewmyqqabmgffjsk1xbcnlcy', height: 300, width:300, crop: :fill  %>
+        <% end %>
       </div>
     </div>
     </div>
