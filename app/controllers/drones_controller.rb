@@ -1,5 +1,6 @@
 class DronesController < ApplicationController
     before_action :set_drone, only: [:show, :edit, :update, :destroy]
+    before_action :authenticate_user! , only:  [:new, :create]
 
     def index
       @drones = Drone.all
