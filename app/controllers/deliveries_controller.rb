@@ -1,19 +1,27 @@
 class DeliveriesController < ApplicationController
-    def index
-      @deliveries = Delivery.all
-    end 
 
-    def create
-      @delivery = Delivery.new(params_delivery)
-      @drone = Drone.find(params[:drone_id])
-      @delivery.drone = @delivery
-      @delivery.save 
+  def index
+    @deliveries = Delivery.all
+  end 
+
+  def create
+    @drone = Drone.find(params[:drone_id])
+    @delivery = Delivery.new(delivery_params)
+    @delivery.drone = @drone
+    @delivery.user = current_user
+    @delivery.status = "En attente"
+    #raise
+
+    if @delivery.save
       redirect_to drone_path(@drone)
-    end
+    else
+      flash[:delivery_errors] = @delivery.errors.full_messages
+      #redirect_to drone_path(@drone)
 
-    private 
-
-    def params_delivery
-      params.require(:delivery).permit(:delivery_time, :delivery_address, :description, :weight, :status)
     end
+  end
+
+  def delivery_params
+    params.require(:delivery).permit(:description, :weight, :delivery_address, :delivery_time)
+  end
 end
