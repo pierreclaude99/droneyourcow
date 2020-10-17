@@ -1,0 +1,31 @@
+<div class= "container">
+  <div class = "profile">
+    <div class= "profile_header">
+      <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar " %>
+      <h1>  <%= @user.name %> </h1>
+    </div>
+    <div class="profile_content">
+      <ul>
+        <li> Adresse : <%= @user.address %>  </li>
+        <li> Presentation : <%= @user.presentation %> </li>
+      </ul>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12 col-lg-6">
+      <h2> Reviews </h2>
+      <% Review.all.each do |review| %>
+        <% if review.delivery.drone.user.id == @user.id  %>
+          <%= render "shared/review", review: review %>
+        <% end %>
+      <% end %>
+    </div>
+    <div class="col-12 col-lg-6">
+      <h2> Mes drones </h2>
+      <% @user.drones.all.each do |drone| %>
+          <%= render "shared/drone_card", drone: drone %>
+      <% end %>
+    </div>
+  </div>
+
+</div>
