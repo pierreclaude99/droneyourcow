@@ -21,4 +21,6 @@ Drone.create(model: "Drone 3", autonomy: 30, maximum_distance: 10, carry_capacit
 Drone.create(model: "Drone 4", autonomy: 30, maximum_distance: 10, carry_capacity: 1, delivery_price: 30, user: User.first)
 Drone.create(model: "Drone 5", autonomy: 30, maximum_distance: 10, carry_capacity: 1, delivery_price: 30, user: User.first)
 
-Delivery.create(delivery_time: "24 juillet 2021", delivery_address: "7 Rue de la Boetile 75008 Paris", user: User.first, description: "10:00", weight: 4, status: "Attente d'acceptation")
+time = Time.now
+delivery_test = Delivery.new(delivery_time: time , delivery_address: "7 Rue de la Boetile 75008 Paris", user: User.first, description: "10:00", weight: 4, status: "Attente d'acceptation")
+delivery_test.save!

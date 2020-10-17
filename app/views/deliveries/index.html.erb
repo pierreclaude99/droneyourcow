@@ -1,24 +1,23 @@
 <h1>Liste des demandes de livraison en tant que loueur</h1>
 
-<%# <ul class="list-unstyled list-inline"> %>
+<ul class="list-unstyled list-inline">
   <% @deliveries.each do |delivery| %>
     <% if delivery.user == current_user %>
-      <ul class="list-unstyled list-inline">
         <li class="list-inline-item"><%= delivery.delivery_address %></li>
-        <li class="list-inline-item"><%= delivery.user %></li>
+        <li class="list-inline-item"><%= delivery.user.name %></li>
         <li class="list-inline-item"><%= delivery.delivery_time %></li>
         <li class="list-inline-item"><%= delivery.description %></li>
-        <li class="list-inline-item"><%= delivery.description %></li>
-        <li class="list-inline-item"><%= delivery.status %></li>
-      </ul>   
+        <li class="list-inline-item"><%= delivery.status %></li>  
     <% end %>
   <% end %>
-<%# </ul> %>
+</ul>
+
+<h1>Liste des demandes de livraison en tant que propriétaires</h1>
 
 <% @deliveries.each do |delivery| %>
   <% if delivery.drone.user == current_user %>
     <%= delivery.delivery_address %>
-    <%= delivery.user %>
+    <%= delivery.user.name %>
     <%= delivery.delivery_time %>
     <%= delivery.description %>
     <%= delivery.weight %>
