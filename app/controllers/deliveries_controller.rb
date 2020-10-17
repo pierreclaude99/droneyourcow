@@ -2,7 +2,7 @@ class DeliveriesController < ApplicationController
 
   def index
     @deliveries = Delivery.all
-  end 
+  end
 
   def create
     @drone = Drone.find(params[:drone_id])
@@ -13,7 +13,7 @@ class DeliveriesController < ApplicationController
     #raise
 
     if @delivery.save
-      redirect_to drone_path(@drone)
+      redirect_to deliveries_path
     else
       flash[:delivery_errors] = @delivery.errors.full_messages
       #redirect_to drone_path(@drone)

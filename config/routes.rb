@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     resources :deliveries, only: [:create] do
       resources :reviews, only: [:new, :create]
     end
+
+ end
   resources :deliveries, only: [:index]
-end
 end

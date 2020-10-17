@@ -3,11 +3,15 @@
 <ul class="list-unstyled list-inline">
   <% @deliveries.each do |delivery| %>
     <% if delivery.user == current_user %>
+    <ul>
+      <li>
         <li class="list-inline-item"><%= delivery.delivery_address %></li>
         <li class="list-inline-item"><%= delivery.user.name %></li>
         <li class="list-inline-item"><%= delivery.delivery_time %></li>
         <li class="list-inline-item"><%= delivery.description %></li>
-        <li class="list-inline-item"><%= delivery.status %></li>  
+        <li class="list-inline-item"><%= delivery.status %></li>
+      </li>
+    </ul>
     <% end %>
   <% end %>
 </ul>
@@ -16,11 +20,15 @@
 
 <% @deliveries.each do |delivery| %>
   <% if delivery.drone.user == current_user %>
-    <%= delivery.delivery_address %>
-    <%= delivery.user.name %>
-    <%= delivery.delivery_time %>
-    <%= delivery.description %>
-    <%= delivery.weight %>
-    <%= delivery.status %>
+  <ul>
+    <li>
+    <li class="list-inline-item"><%= delivery.delivery_address %>
+    <li class="list-inline-item"><%= delivery.user.name %>
+    <li class="list-inline-item"><%= delivery.delivery_time %>
+    <li class="list-inline-item"><%= delivery.description %>
+    <li class="list-inline-item"><%= delivery.weight %>
+    <li class="list-inline-item"><%= delivery.status %>
+    </li>
+  </ul>
   <% end %>
 <% end %>
