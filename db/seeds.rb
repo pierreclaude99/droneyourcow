@@ -12,6 +12,7 @@ ademola = Drone.new(model: 'XTR', autonomy: 4,  maximum_distance: 100, carry_cap
 ademola.user = user
 ademola.save!
 
+
 User.create(email: "machin@bidule.com", password: "123456")
 
 Drone.create(model: "Drone 1", autonomy: 30, maximum_distance: 10, carry_capacity: 1, delivery_price: 30, user: User.first)
@@ -20,3 +21,4 @@ Drone.create(model: "Drone 3", autonomy: 30, maximum_distance: 10, carry_capacit
 Drone.create(model: "Drone 4", autonomy: 30, maximum_distance: 10, carry_capacity: 1, delivery_price: 30, user: User.first)
 Drone.create(model: "Drone 5", autonomy: 30, maximum_distance: 10, carry_capacity: 1, delivery_price: 30, user: User.first)
 
+Delivery.create(delivery_time: "24 juillet 2021", delivery_address: "7 Rue de la Boetile 75008 Paris", user: User.first, description: "10:00", weight: 4, status: "Attente d'acceptation")
