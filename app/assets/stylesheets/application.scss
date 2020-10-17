@@ -11,3 +11,14 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+
+
+.hover-card:hover {
+  transition: all 1s ease-out !important;
+}
+
+.hover-card:hover {
+  background-color: white !important;
+  border: 1px solid $light;
+  transition: all 1s ease-out !important;
+}
