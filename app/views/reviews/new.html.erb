@@ -1,0 +1,28 @@
+
+<div class="container">
+ <div class="row">
+  <div class='col-sm-6 col-sm-offset-3'>
+   <div class="form-group">
+    <h3>Laisser un commentaire ✨✨✨ </h3>
+    <h5>Récapitulatif :</h5>
+    <p><strong>Référence de la livraison : </strong># <%= @delivery.id %> </p>
+    <p><strong>Date de la livraison : </strong><%= @delivery.delivery_time%> </p>
+    <p><strong>Adresse de la livraison : </strong><%= @delivery.delivery_address %> </p>
+    <p><strong>Status de la livraison : </strong><%= @delivery.status %> </p>
+    <p><strong>Poids de la livraison : </strong><%= @delivery.weight %> Kg </p>
+    <p><strong>Description de la livraison : </strong><%= @delivery.description %></p>
+    <p><strong>Propriétaire : </strong><%= @delivery.user.name %> / <%= @delivery.user.email %></p>
+    <p><strong>Modèle du Drone : </strong><%= @delivery.drone.model %></p>
+
+
+
+    <%= simple_form_for [ @delivery.drone, @delivery, @review ] do |f| %>
+    <%= f.input :rating, label: 'Note de 0 à 5 :' %>
+    <%= f.input :content, label: "Message pour #{@delivery.user.name} :" %>
+    <%= f.button :submit, "C'est parti !", class: 'btn btn-primary' %>
+    <% end %>
+   </div>
+  </div>
+ </div>
+</div>
+
