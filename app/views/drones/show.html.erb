@@ -1,62 +1,76 @@
-<div class="container">
-
-  <h1><%= @drone.model %></h1>
-  <div>
-    <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
-    <div class="carousel-inner">
-      <div class="carousel-item active">
+<section id="top" class="my-5">
+  <div class="container">
+    <div class="row d-flex align-items-center">
+      <div class="col-5">
         <% if @drone.photo.attached? %>
-            <%= cl_image_tag @drone.photo.key, height: 300, width:400, crop: :fill %>
-         <% else %>
-         <%= cl_image_tag 'g8c8dewmyqqabmgffjsk1xbcnlcy', height: 300, width:300, crop: :fill  %>
+          <%= cl_image_tag @drone.photo.key, height: 1000, width:1000, crop: :fill, class: "img-fluid" %>
+        <% else %>
+          <%= cl_image_tag 'g8c8dewmyqqabmgffjsk1xbcnlcy', height: 1000, width:1000, crop: :fill, class: "img-fluid" %>
         <% end %>
       </div>
+      <div class="col-7">
+        <div class="card bg-light border border-white p-4">
+            <h1><%= @drone.model %></h1>            <hr>
+              <p><%= image_tag  "https://kitt.lewagon.com/placeholder/users/random", class: "avatar mr-2" %> Drone proposé par : <%= @drone.user.name %></p>
+            <hr class="mt-0">
+            <div class="card p-4 border border-white rounded-lg">
+              <%= simple_form_for [@drone, @delivery] do |f| %>
+              <%= f.input :delivery_address %>
+              <%= f.input :delivery_time, label: false, placeholder: "Sélectionnez la date et l'heure", class: "form-control" %>
+              <%= f.input :weight %>
+              <%= f.input :description %>
+              <p class="h4"> Prix : <%= @drone.delivery_price %>€</p>
+              <br>
+              <%= f.submit "C'est parti", class: "btn btn-primary btn-lg rounded-lg btn-block" %>
+              <% end %>
+            </div>
+        </div>
+      </div>
     </div>
-    </div>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
+  </div>
+</section>
 
-    <table class="table table-striped">
-    <thead>
-      <tr>
-        <th scope="col">Caractéristiques du drone</th>
-        <th scope="col"></th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row">Model</th>
-        <td><%=@drone.model%></td>
-      </tr>
-      <tr>
-        <th scope="row">Autonomie</th>
-        <td><%=@drone.autonomy%> h</td>
-      </tr>
-      <tr>
-        <th scope="row">Portée</th>
-        <td><%=@drone.maximum_distance%> km</td>
-      </tr>
-      <tr>
-        <th scope="row">Capacité</th>
-        <td><%=@drone.carry_capacity%> kg</td>
-      </tr>
-    </tbody>
-    </table>
-    <div class="reviews">
+<section id="skill" class="my-5 p-3">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">Caractéristiques du drone</th>
+              <th scope="col"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Model</th>
+              <td><%=@drone.model%></td>
+            </tr>
+            <tr>
+              <th scope="row">Autonomie</th>
+              <td><%=@drone.autonomy%> h</td>
+            </tr>
+            <tr>
+              <th scope="row">Portée</th>
+              <td><%=@drone.maximum_distance%> km</td>
+            </tr>
+            <tr>
+              <th scope="row">Capacité</th>
+              <td><%=@drone.carry_capacity%> kg</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="review">
+  <div class="container">
+    <div class="row">
+      <div class="col-6">
       <h5>Derniers commentaires : </h5>
-      <ul>
+        <ul>
           <% @drone.deliveries.each do |delivery| %>
           <% review = Review.where(delivery_id: delivery) %>
             <% review.each do |review| %>
@@ -77,37 +91,8 @@
               <% end%>
             <% end%>
           </li>
-      </ul>
+        </ul>
+      </div>
     </div>
   </div>
-</div>
-
-<%= simple_form_for [@drone, @delivery] do |f| %>
-<div class="container">
- <div class="row">
-  <div class='col-sm-6 col-sm-offset-3 module-resa'>
-
-  <%= image_tag  "https://kitt.lewagon.com/placeholder/users/random", class: "avatar" %>
- <p> Drone proposé par <%= @drone.user.name %></p>
- <h4> Réservation d'une livraison </h4>
- <p>Adresse de départ <%=current_user.address%></p>
-   <div class="form-group">
-    <%= f.input :delivery_address %>
-    <div class='input-group date' id='datetimepicker'>
-    <%= f.input :delivery_time, label: false, placeholder: "Sélectionnez la date et l'heure", class: "form-control" %>
-     <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
-     </div>
-     <%= f.input :weight %>
-     <%= f.input :description %>
-    </div>
-   <div class="form-group">
-    <p>Prix : <%= @drone.delivery_price %>€</p>
-   <%= f.submit "C'est parti", class: "btn btn-primary" %>
-   </div>
-
-  </div>
- </div>
-</div>
-<% end %>
-
-
+</section>
