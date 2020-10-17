@@ -54,14 +54,39 @@
       </tr>
     </tbody>
     </table>
+    <div class="reviews">
+      <h5>Derniers commentaires : </h5>
+      <ul>
+          <% @drone.deliveries.each do |delivery| %>
+          <% review = Review.where(delivery_id: delivery) %>
+            <% review.each do |review| %>
+          <li class="review">
+          <%= image_tag  "https://kitt.lewagon.com/placeholder/users/random", class: "avatar" %>
+          <% if review.rating == 1%>
+              <%= '⭐'%>
+              <%elsif review.rating == 2 %>
+              <%= '⭐⭐'%>
+              <%elsif review.rating == 3 %>
+              <%= '⭐⭐⭐'%>
+              <%elsif review.rating == 4 %>
+              <%= '⭐⭐⭐⭐'%>
+              <%else %>
+              <%= '⭐⭐⭐⭐⭐'%>
+              <% end%>
+              <%= review.content %>
+              <% end%>
+            <% end%>
+          </li>
+      </ul>
+    </div>
   </div>
 </div>
-
 
 <%= simple_form_for [@drone, @delivery] do |f| %>
 <div class="container">
  <div class="row">
   <div class='col-sm-6 col-sm-offset-3 module-resa'>
+
   <%= image_tag  "https://kitt.lewagon.com/placeholder/users/random", class: "avatar" %>
  <p> Drone proposé par <%= @drone.user.name %></p>
  <h4> Réservation d'une livraison </h4>
@@ -79,8 +104,10 @@
     <p>Prix : <%= @drone.delivery_price %>€</p>
    <%= f.submit "C'est parti", class: "btn btn-primary" %>
    </div>
+
   </div>
  </div>
 </div>
 <% end %>
+
 
