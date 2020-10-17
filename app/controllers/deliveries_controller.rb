@@ -1,4 +1,9 @@
 class DeliveriesController < ApplicationController
+
+  def index
+    @deliveries = Delivery.all
+  end 
+
   def create
     @drone = Drone.find(params[:drone_id])
     @delivery = Delivery.new(delivery_params)
@@ -14,10 +19,6 @@ class DeliveriesController < ApplicationController
       #redirect_to drone_path(@drone)
 
     end
-  end
-
-  def show
-
   end
 
   def delivery_params
