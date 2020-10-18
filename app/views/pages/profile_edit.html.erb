@@ -1,0 +1,42 @@
+
+<div class="container">
+
+</div>
+
+<div class= "container">
+  <% if current_user == @user %>
+
+    <div class = "profile">
+        <%= link_to profile_path(@user) , class: "btn btn-primary" do %>
+              <i class="fas fa-arrow-left"></i> Retour à mon profil
+        <% end %>
+      <div class= "profile_header">
+        <%= simple_form_for :user, url: "", method: :patch do |f| %>
+        <%= f.input :name %>
+        <%= f.input :address%>
+        <%= f.input :phone_number %>
+        <%= f.input :presentation , as: :text%>
+        <br>
+        <%= f.submit "Mettre à jour", class: "btn btn-primary" %>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+  <div class="row">
+    <div class="col-12 col-lg-6">
+      <h2> Reviews </h2>
+      <% Review.all.each do |review| %>
+        <% if review.delivery.drone.user.id == @user.id  %>
+          <%= render "shared/review", review: review %>
+        <% end %>
+      <% end %>
+    </div>
+    <div class="col-12 col-lg-6">
+      <h2> Mes drones </h2>
+      <% @user.drones.all.each do |drone| %>
+          <%= render "shared/drone_card", drone: drone %>
+      <% end %>
+    </div>
+  </div>
+
+</div>
