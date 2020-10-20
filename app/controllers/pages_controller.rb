@@ -11,12 +11,10 @@ class PagesController < ApplicationController
   end
 
   def profile_update
+
     @user.update(user_params)
-    if @user.save
-      redirect_to profile_path(@user)
-    else
-      render :profile_edit
-    end
+    redirect_to profile_path(@user)
+
   end
 
   private
@@ -25,6 +23,6 @@ class PagesController < ApplicationController
     @user = User.find(params[:id])
   end
   def user_params
-    params.require(:user).permit(:name, :phone, :address, :presentation)
+    params.require(:user).permit(:name, :phone_number, :address, :presentation)
   end
 end
