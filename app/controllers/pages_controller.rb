@@ -10,12 +10,16 @@ class PagesController < ApplicationController
 
   end
 
-  def profile_update
+  # def profile_update
 
-    @user.update(user_params)
-    redirect_to profile_path(@user)
+  #   @user.update(user_params)
+  #   if @user.save
+  #     redirect_to profile_path(@user)
+  #   else
+  #     render :profile_edit
+  #   end
 
-  end
+  # end
 
   private
 

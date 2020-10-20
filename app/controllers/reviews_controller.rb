@@ -17,7 +17,7 @@ class ReviewsController < ApplicationController
       @review = Review.new(params_review)
       @review.delivery = @delivery
       @review.user = current_user
-      if @review.save!
+      if @review.save
         redirect_to drone_path(@delivery.drone_id)
       else
         render :new
