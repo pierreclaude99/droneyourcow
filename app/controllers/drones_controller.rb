@@ -4,6 +4,14 @@ class DronesController < ApplicationController
 
     def index
       @drones = Drone.all
+
+      @markers = @drones.geocoded.map do |drone|
+        {
+          lat: drone.latitude,
+          lng: drone.longitude,
+          infoWindow: render_to_string(partial: "info_window", locals: { drone: drone })
+        }
+      end
     end
 
     def show
@@ -43,7 +51,7 @@ class DronesController < ApplicationController
     private
 
     def params_drone
-      params.require(:drone).permit(:model, :autonomy, :maximum_distance, :carry_capacity, :delivery_price, :photo)
+      params.require(:drone).permit(:model, :autonomy, :maximum_distance, :carry_capacity, :delivery_price, :address, :photo)
     end
 
     def set_drone
