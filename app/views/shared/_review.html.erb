@@ -1,0 +1,14 @@
+<li class="review">
+<%= image_tag  "https://kitt.lewagon.com/placeholder/users/random", class: "avatar" %>
+<% if review.rating == 1%>
+  <%= '⭐'%>
+  <%elsif review.rating == 2 %>
+  <%= '⭐⭐'%>
+  <%elsif review.rating == 3 %>
+  <%= '⭐⭐⭐'%>
+  <%elsif review.rating == 4 %>
+  <%= '⭐⭐⭐⭐'%>
+  <%else %>
+  <%= '⭐⭐⭐⭐⭐'%>
+<% end%>
+<%= review.content %>

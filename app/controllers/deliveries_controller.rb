@@ -21,6 +21,13 @@ class DeliveriesController < ApplicationController
     end
   end
 
+  def update
+    delivery = Delivery.find(params[:id])
+    delivery.status = "Validé"
+    delivery.save
+    redirect_to deliveries_path
+  end
+
   def delivery_params
     params.require(:delivery).permit(:description, :weight, :delivery_address, :delivery_time)
   end

@@ -1,0 +1,25 @@
+.profile_header {
+  display: flex;
+  width: 500px;
+  justify-content: space-evenly;
+  margin: 50px;
+  .avatar {
+    height: 40px;
+  }
+  ul {
+    list-style-type: none;
+  }
+}
+
+.profile_content {
+
+  ul {
+    list-style-type: none;
+  }
+}
+
+.profile {
+  border: 1px solid black;
+  margin: 50px;
+  border-radius: 5px;
+}
