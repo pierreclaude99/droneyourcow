@@ -44,19 +44,23 @@
           <tbody>
             <tr>
               <th scope="row">Model</th>
-              <td><%=@drone.model%></td>
+              <td><%= @drone.model %></td>
             </tr>
             <tr>
               <th scope="row">Autonomie</th>
-              <td><%=@drone.autonomy%> h</td>
+              <td><%= @drone.autonomy %> h</td>
             </tr>
             <tr>
               <th scope="row">Portée</th>
-              <td><%=@drone.maximum_distance%> km</td>
+              <td><%= @drone.maximum_distance %> km</td>
             </tr>
             <tr>
               <th scope="row">Capacité</th>
-              <td><%=@drone.carry_capacity%> kg</td>
+              <td><%= @drone.carry_capacity %> kg</td>
+            </tr>
+            <tr>
+              <th scope="row">Adresse</th>
+              <td><%= @drone.address %></td>
             </tr>
           </tbody>
         </table>

@@ -8,7 +8,8 @@ class DronesController < ApplicationController
       @markers = @drones.geocoded.map do |drone|
         {
           lat: drone.latitude,
-          lng: drone.longitude
+          lng: drone.longitude,
+          infoWindow: render_to_string(partial: "info_window", locals: { drone: drone })
         }
       end
     end
