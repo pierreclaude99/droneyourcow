@@ -18,14 +18,14 @@
     <tr>
         <th scope="row"># <%= delivery.id %></th>
         <td><%= delivery.delivery_address %></td>
-        <td><%= delivery.user.name %></td>
+        <td><%= delivery.drone.user.name %></td>
         <td><%= delivery.delivery_time.strftime("%d/%m/%Y")   %></td>
         <td><%= delivery.description %></td>
         <td><%= delivery.status %></td>
         <% if delivery.status == "En attente" %>
           <td><button class="btn btn-warning"><%= link_to "En attente de validation" %></button></td>
         <% else %>
-          <td><button type="button" class="btn btn-success"><%= link_to "Laissez un commentaire", new_drone_delivery_review_path(delivery.id, delivery.drone_id) %></button></td>
+          <td><button type="button" class="btn btn-success"><%= link_to "Laissez un commentaire", new_drone_delivery_review_path(delivery.drone_id,delivery.id) %></button></td>
         <% end %>
       <% end %>
     <% end %>
