@@ -60,7 +60,7 @@
         <% if delivery.status == "En attente" %>
           <td><button class="btn btn-warning"><%= link_to "Validez la location", delivery_path(delivery), method: :patch %></button></td>
         <% else %>
-          <td><button type="button" class="btn btn-success"><%= link_to "Laissez un commentaire", new_drone_delivery_review_path(delivery.id, delivery.drone_id) %></button></td>
+          <td><button type="button" class="btn btn-success"><%= link_to "Livraison terminée 👏👏", drone_path(delivery.drone_id) %></button></td>
         <% end %>
       <% end %>
     <% end %>
