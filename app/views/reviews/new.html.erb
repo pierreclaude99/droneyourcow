@@ -11,14 +11,19 @@
     <p><strong>Status de la livraison : </strong><%= @delivery.status %> </p>
     <p><strong>Poids de la livraison : </strong><%= @delivery.weight %> Kg </p>
     <p><strong>Description de la livraison : </strong><%= @delivery.description %></p>
-    <p><strong>Propriétaire : </strong><%= @delivery.user.name %> / <%= @delivery.user.email %></p>
+    <p><strong>Propriétaire : </strong><%= @delivery.drone.user.name %> / <%= @delivery.drone.user.email %></p>
     <p><strong>Modèle du Drone : </strong><%= @delivery.drone.model %></p>
 
 
 
     <%= simple_form_for [ @delivery.drone, @delivery, @review ] do |f| %>
     <%= f.input :rating, label: 'Note de 0 à 5 :' %>
-    <%= f.input :content, label: "Message pour #{@delivery.user.name} :" %>
+    <% if current_user == @delivery.drone.user  %>
+      <%= f.input :content, label: "Message pour #{@delivery.user.name} :" %>
+    <% else %>
+      <%= f.input :content, label: "Message pour #{@delivery.drone.user.name} :" %>
+    <% end %>
+
     <%= f.button :submit, "C'est parti !", class: 'btn btn-primary' %>
     <% end %>
    </div>
