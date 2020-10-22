@@ -1,0 +1,68 @@
+<section class="position-relative overflow-hidden p-3 p-md-5 m-0 text-center bg-light banner-hero text-white">
+      <div class="col-md-5 p-lg-5 mx-auto">
+        <h1>  Drone <b>your cow</b></h1>
+        <p class="lead font-weight-normal">Cow delivery wherever you want !</p>
+        <%= link_to "Ajouter un drone",  new_drone_path, class: "btn btn-success btn-lg rounded-lg btn-block" %>
+
+      </div>
+      <div class="product-device d-none d-md-block"></div>
+      <div class="product-device product-device-2 d-none d-md-block"></div>
+</section>
+
+<section id="how-to" class="my-5 py-5">
+  <div class="container">
+    <h2 class="text-center mb-5">Comment marche <b class="text-success">la livraison par drone?</b></h2>
+    <div class="row d-flex align-items-stretch">
+      <div class="col-3 d-flex align-items-stretch">
+        <div class="bg-light p-4 rounded-lg ">
+          <%= cl_image_tag "status_nuqllm", height: 100, width:100, crop: :fill, class: "img-fluid mx-auto rounded-circle p-4  bg-white mx-auto d-block" %>
+          <p class="h1 text-center mt-4">1.</p>
+          <p class="text-center">Je recherche un drone sur DroneYourCow pour une livraison par les airs.</p>
+        </div>
+      </div>
+      <div class="col-3 d-flex align-items-stretch">
+        <div class="bg-light p-4 rounded-lg ">
+          <%= cl_image_tag "search_iobo4b", height: 100, width:100, crop: :fill, class: "img-fluid mx-auto rounded-circle p-4  bg-white mx-auto d-block" %>
+          <p class="h1 text-center mt-4">2.</p>
+          <p>Je trouve le drone idéal et je fais une demande de livraison auprès du propriétaire.</p>
+        </div>
+      </div>
+      <div class="col-3 d-flex align-items-stretch ">
+        <div class="bg-light p-4 rounded-lg ">
+          <%= cl_image_tag "secure_ayqqdj", height: 100, width:100, crop: :fill, class: "img-fluid mx-auto rounded-circle p-4  bg-white mx-auto d-block" %>
+          <p class="h1 text-center mt-4">3.</p>
+          <p>Le propriétaire accepte demande de livraison.</p>
+        </div>
+      </div>
+      <div class="col-3 d-flex align-items-stretch ">
+        <div class="bg-light p-4 rounded-lg ">
+          <%= cl_image_tag "drone_dquhee", height: 100, width:100, crop: :fill, class: "img-fluid mx-auto rounded-circle p-4  bg-white mx-auto d-block" %>
+          <p class="h1 text-center mt-4">4.</p>
+          <p>le drone passe récupérer le colis chez moi et le transporte jusqu'a son destinataire</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section id="owner" class="my-5 py-5 bg-light">
+  <div class="container my-5">
+    <div class="row d-flex align-items-center">
+      <div class="col-6">
+          <%= cl_image_tag "ait1s4dgcw111_ilcjuc", height: 400, width:600, crop: :fill, class: "img-fluid mx-auto rounded-lg bg-white mx-auto d-block " %>
+      </div>
+      <div class="col-6 p-4">
+        <h2 class="mb-4">Propriéraire <b class="text-success">de drone ?</b></h2>
+        <p>Vous possédez un drone et souhaitez amortir son cout, en louant votre drone gagnez jusqu’à 1000 euros par mois</p>
+        <p>Vous souhaitez utiliser un drone mais son coût à l’achat est décourageant, alors profitez de la location à partir de 25 euros pour une livraison près de chez vous.</p>
+      </div>
+    </div>
+  </div>
+
+
+
+</section>
+
+
+
