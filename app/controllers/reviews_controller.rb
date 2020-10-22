@@ -18,16 +18,10 @@ class ReviewsController < ApplicationController
       @review.delivery = @delivery
       @review.user = current_user
       if @review.save
-        redirect_to drone_path(@delivery.drone_id)
+        redirect_to deliveries_path
       else
         render :new
       end
-    end
-
-    def destroy
-      @review.destroy
-
-      redirect_to drone_deliveries_path(@delivery)
     end
 
     private

@@ -3,9 +3,13 @@ class DronesController < ApplicationController
     before_action :authenticate_user! , only:  [:new, :create]
 
     def index
-      @drones = Drone.all
+      @drones = Drone.all.order("created_at DESC").geocoded
 
-      @markers = @drones.geocoded.map do |drone|
+      if params[:address]
+        @drones = @drones.search_by_address(params[:address])
+      end
+
+      @markers = @drones.map do |drone|
         {
           lat: drone.latitude,
           lng: drone.longitude,
@@ -23,7 +27,6 @@ class DronesController < ApplicationController
     end
 
     def create
-
       @drone = Drone.new(params_drone)
       @drone.user_id = current_user.id
       if @drone.save
