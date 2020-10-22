@@ -3,19 +3,16 @@
   <div class="row">
     <div class="col-6 mx-auto">
         <h1 class="mb-5">Ajouter un drone</h1>
-<%= simple_form_for(@drone) do |f| %>
-  <%= f.input :model  %>
-  <%= f.input :autonomy  %>
-  <%= f.input :maximum_distance  %>
-  <%= f.input :carry_capacity  %>
-  <%= f.input :delivery_price  %>
-  <%= f.input :address  %>
-  <%= f.input :photo, as: :file  %>
-
-  <%= f.submit %>
-<% end %>
+          <%= simple_form_for(@drone) do |f| %>
+            <%= f.input :model  %>
+            <%= f.input :autonomy  %>
+            <%= f.input :maximum_distance  %>
+            <%= f.input :carry_capacity  %>
+            <%= f.input :delivery_price  %>
+            <%= f.input :address  %>
+            <%= f.input :photo, as: :file  %>
+            <%= f.submit %>
+          <% end %>
     </div>
   </div>
-
-
 </div>
