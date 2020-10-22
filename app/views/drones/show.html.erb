@@ -77,7 +77,7 @@
         <ul>
           <% @drone.deliveries.each do |delivery| %>
           <% review = Review.where(delivery_id: delivery) %>
-            <% review.each do |review| %>
+            <%  review.each do |review| %>
           <li class="review">
           <%= image_tag  "https://kitt.lewagon.com/placeholder/users/random", class: "avatar" %>
           <% if review.rating == 1%>
