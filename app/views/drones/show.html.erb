@@ -110,16 +110,16 @@
               <%= '⭐'%>
               <%elsif review.rating == 2 %>
               <%= '⭐⭐'%>
-              <%elsif review.rating == 3 %>
+              <% elsif review.rating == 3 %>
               <%= '⭐⭐⭐'%>
-              <%elsif review.rating == 4 %>
+              <% elsif review.rating == 4 %>
               <%= '⭐⭐⭐⭐'%>
-              <%else %>
+              <% else %>
               <%= '⭐⭐⭐⭐⭐'%>
-              <% end%>
+              <% end %>
               <%= review.content %>
-              <% end%>
-            <% end%>
+              <% end %>
+            <% end %>
           </li>
         </ul>
       </div>
