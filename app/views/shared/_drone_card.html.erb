@@ -16,8 +16,8 @@
      </ul>
      <p class="h3 list-inline-item"><%= drone.delivery_price %> €</p>
 
-    <% if current_user.photo.attached? %>
-          <p><%= cl_image_tag current_user.photo.key, class: "avatar mr-2" %>  <%= drone.user.name %> </p>
+    <% if drone.user.photo.attached? %>
+          <p><%= cl_image_tag drone.user.photo.key, class: "avatar mr-2" %>  <%= drone.user.name %> </p>
     <% else %>
 
           <p><%= image_tag "https://kitt.lewagon.com/placeholder/users/random", class: "avatar mr-2" %>  <%= drone.user.name %> </p>
