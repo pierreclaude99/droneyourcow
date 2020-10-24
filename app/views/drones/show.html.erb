@@ -71,11 +71,15 @@
         <div class="col-7">
           <div class="card bg-light border border-white p-3">
               <h2>Réservez le drone : <%= @drone.model %></h2>            <hr>
-                <p><%= image_tag  "https://kitt.lewagon.com/placeholder/users/random", class: "avatar mr-2" %> Drone proposé par : <%= @drone.user.name %></p>
+                <% if @drone.user.photo.attached? %>
+                  <p><%= cl_image_tag @drone.user.photo.key, class: "avatar mr-2" %> Drone proposé par : <%= @drone.user.name %></p>
+                <% else %>
+                  <p><%= image_tag  "https://kitt.lewagon.com/placeholder/users/random", class: "avatar mr-2" %> Drone proposé par : <%= @drone.user.name %></p>
+                <% end %>
               <hr class="mt-0">
               <div class="card p-4 border border-white rounded-lg">
                 <%= simple_form_for [@drone, @delivery] do |f| %>
-                <%= f.input :delivery_address, label: "Adresse de destination de la livraison" %>
+                <%= f.input :delivery_address, label: "Adresse de destination de la livraison"%>
                 <%= f.input :delivery_time, as: :string, type: :text, label: false, placeholder: "Sélectionnez la date du début de la livraison", class: "form-control", input_html: {id: "date-form"} %>
                 <%= f.input :weight, label: "Poids du colis en kg" %>
                 <%= f.input :description, label: "Description du colis" %>
