@@ -80,7 +80,7 @@
               <div class="card p-4 border border-white rounded-lg">
                 <%= simple_form_for [@drone, @delivery] do |f| %>
                 <%= f.input :delivery_address, label: "Adresse de destination de la livraison"%>
-                <%= f.input :delivery_time, as: :string, type: :text, label: false, placeholder: "Sélectionnez la date du début de la livraison", class: "form-control", input_html: {id: "date-form"} %>
+                <%= f.input :delivery_time, as: :date, label: false, placeholder: "Sélectionnez la date du début de la livraison", class: "form-control", input_html: {id: "date-form"} %>
                 <%= f.input :weight, label: "Poids du colis en kg" %>
                 <%= f.input :description, label: "Description du colis" %>
                 <p class="h4"> Prix : <%= @drone.delivery_price %>€</p>
