@@ -1,30 +1,69 @@
-<section id="top" class="my-5">
+<section id="top" class="mt-4 mb-1">
   <div class="container">
-    <div class="row d-flex align-items-center">
-      <div class="col-5">
+    <div class="row d-flex">
+      <div class="col-5 p-0">
         <% if @drone.photo.attached? %>
           <%= cl_image_tag @drone.photo.key, height: 1000, width:1000, crop: :fill, class: "img-fluid" %>
         <% else %>
           <%= cl_image_tag 'g8c8dewmyqqabmgffjsk1xbcnlcy', height: 1000, width:1000, crop: :fill, class: "img-fluid" %>
         <% end %>
+
+          <section id="skill" class="p-3">
+<!--             <div class="container"> -->
+              <div class="row">
+                <div class="col-12 mt-4">
+                  <table class="table table-striped">
+                    <thead>
+                        <h5 scope="col"><strong>Caractéristiques du drone</strong></h5>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <th scope="row">Model</th>
+                        <td><%= @drone.model %></td>
+                      </tr>
+                      <tr>
+                        <th scope="row">Autonomie</th>
+                        <td><%= @drone.autonomy %> h</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">Portée</th>
+                        <td><%= @drone.maximum_distance %> km</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">Capacité</th>
+                        <td><%= @drone.carry_capacity %> kg</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">Adresse</th>
+                        <td><%= @drone.address %></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+<!--             </div> -->
+          </section>
       </div>
+
       <% if current_user == @drone.user %>
       <div class="col-7">
-          <div class="card bg-light border border-white p-4">
+          <div class="card bg-light border border-white p-3 update">
               <h1><%= @drone.model %></h1>
               <div class="card p-4 border border-white rounded-lg">
                 <%= simple_form_for @drone do |f| %>
-                <%= f.input :address %>
-                <%= f.input :model %>
-                <%= f.input :autonomy, class: "form-control" %>
-                <%= f.input :carry_capacity %>
-                <%= f.input :maximum_distance %>
-                <%= f.input :delivery_price %>
+                <%= f.input :address, label: "Modifier l'adresse" %>
+                <%= f.input :model, label: "Modifier le model"%>
+                <%= f.input :autonomy, label: "Modifier l'autonomie", class: "form-control" %>
+                <%= f.input :carry_capacity, label: "Modifier la capacité" %>
+                <%= f.input :maximum_distance, label: "Modifier la portée / distance max en km" %>
+                <%= f.input :delivery_price, label: "Modifier le prix" %>
+                <%= f.input :photo, as: :file ,input_html: { class: 'd-none hidden', id: 'photo-input'} , label_html: { class: 'upload-photo'}, label: '📷 Modifier la photo' %>
+                <%= image_tag "", width: 300, class: "hidden", id: "photo-preview" %>
 
                 <br>
-                <div class="d-flex">
-                  <%= f.submit "Mettre à jour", class: "btn btn-primary btn-lg rounded-lg btn-block" %>
-                  <%= f.submit "Supprimer", class: "btn btn-danger btn-lg rounded-lg btn-block" %>
+                <div class="btn-group d-flex">
+                  <%= f.submit "Mettre à jour", class: "flex-grow btn btn-primary btn-lg" %>
+                  <%= f.submit "Supprimer", class: "btn btn-secondary btn-lg" %>
                 </div>
                 <% end %>
               </div>
@@ -32,16 +71,16 @@
         </div>
       <% else %>
         <div class="col-7">
-          <div class="card bg-light border border-white p-4">
-              <h1><%= @drone.model %></h1>            <hr>
+          <div class="card bg-light border border-white p-3">
+              <h2>Réservez le drone : <%= @drone.model %></h2>            <hr>
                 <p><%= image_tag  "https://kitt.lewagon.com/placeholder/users/random", class: "avatar mr-2" %> Drone proposé par : <%= @drone.user.name %></p>
               <hr class="mt-0">
               <div class="card p-4 border border-white rounded-lg">
                 <%= simple_form_for [@drone, @delivery] do |f| %>
-                <%= f.input :delivery_address %>
-                <%= f.input :delivery_time, label: false, placeholder: "Sélectionnez la date et l'heure", class: "form-control" %>
-                <%= f.input :weight %>
-                <%= f.input :description %>
+                <%= f.input :delivery_address, label: "Adresse de destination de la livraison" %>
+                <%= f.input :delivery_time, as: :string, type: :text, label: false, placeholder: "Sélectionnez la date du début de la livraison", class: "form-control", input_html: {id: "date-form"} %>
+                <%= f.input :weight, label: "Poids du colis en kg" %>
+                <%= f.input :description, label: "Description du colis" %>
                 <p class="h4"> Prix : <%= @drone.delivery_price %>€</p>
                 <br>
                 <%= f.submit "C'est parti", class: "btn btn-primary btn-lg rounded-lg btn-block" %>
@@ -54,52 +93,13 @@
   </div>
 </section>
 
-<% if current_user != @drone.user %>
-  <section id="skill" class="my-5 p-3">
-    <div class="container">
-      <div class="row">
-        <div class="col-12">
-          <table class="table table-striped">
-            <thead>
-              <tr>
-                <th scope="col">Caractéristiques du drone</th>
-                <th scope="col"></th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="row">Model</th>
-                <td><%= @drone.model %></td>
-              </tr>
-              <tr>
-                <th scope="row">Autonomie</th>
-                <td><%= @drone.autonomy %> h</td>
-              </tr>
-              <tr>
-                <th scope="row">Portée</th>
-                <td><%= @drone.maximum_distance %> km</td>
-              </tr>
-              <tr>
-                <th scope="row">Capacité</th>
-                <td><%= @drone.carry_capacity %> kg</td>
-              </tr>
-              <tr>
-                <th scope="row">Adresse</th>
-                <td><%= @drone.address %></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-  </section>
-<% end %>
+
 
 <section id="review">
   <div class="container">
     <div class="row">
-      <div class="col-6">
-      <h5>Derniers commentaires : </h5>
+      <div class="col-12">
+      <h5><strong>Derniers commentaires :</strong></h5>
         <ul>
           <% @drone.deliveries.each do |delivery| %>
           <% review = Review.where(delivery_id: delivery) %>

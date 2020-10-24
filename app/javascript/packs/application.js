@@ -29,7 +29,9 @@ import { initAutocomplete } from '../plugins/init_autocomplete'
 import { previewImageOnFileSelect } from '../plugins/photo_preview'
 
 
+
 // Internal imports, e.g:
+import { initFlatpickr } from '../plugins/flatpickr'
 // import { initSelect2 } from '../components/init_select2';
 
 document.addEventListener('turbolinks:load', () => {
@@ -38,4 +40,5 @@ document.addEventListener('turbolinks:load', () => {
   initMapbox();
   initAutocomplete();
   previewImageOnFileSelect();
+  initFlatpickr();
 });
