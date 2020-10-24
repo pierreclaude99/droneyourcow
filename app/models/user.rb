@@ -7,4 +7,5 @@ class User < ApplicationRecord
   has_many :drones
   has_many :deliveries
   has_many :reviews, through: :deliveries
+  has_one_attached :photo
 end

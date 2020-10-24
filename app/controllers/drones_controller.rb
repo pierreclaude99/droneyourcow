@@ -19,7 +19,9 @@ class DronesController < ApplicationController
     end
 
     def show
+
       @delivery = Delivery.new
+
     end
 
     def new
@@ -40,9 +42,25 @@ class DronesController < ApplicationController
     end
 
     def update
+
+      if params[:commit] == "Mettre à jour"
       @drone.update(params_drone)
 
       redirect_to drone_path(@drone)
+
+      elsif params[:commit] == "Supprimer"
+        @drone.deliveries.each do |delivery|
+           reviews = Review.where(delivery_id: delivery)
+           reviews.each do |review|
+            review.delete
+           end
+          delivery.delete
+        end
+        @drone.delete
+        redirect_to profile_path(current_user)
+      else
+        redirect_to drones_path
+      end
     end
 
     def destroy
