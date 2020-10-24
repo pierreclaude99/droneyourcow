@@ -1,15 +1,12 @@
-.profile_header {
-  display: flex;
-  width: 500px;
-  justify-content: space-evenly;
-  margin: 50px;
-  .avatar {
-    height: 40px;
+ .avatar {
+    height: 50px;
+    width: 50px;
   }
+
   ul {
     list-style-type: none;
   }
-}
+
 
 .profile_content {
 
@@ -22,4 +19,12 @@
   border: 1px solid black;
   margin: 50px;
   border-radius: 5px;
+}
+
+h2 {
+  text-align: center;
+}
+
+h2, span {
+  font-weight: bold;
 }

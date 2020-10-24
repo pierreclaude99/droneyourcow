@@ -1,37 +1,39 @@
-<div class= "container">
-  <div class = "profile">
-      <% if current_user == @user %>
-        <%= link_to profile_edit_path , class: "btn btn-primary" do %>
-              <i class="far fa-edit"></i> Modifier
-        <% end %>
-      <% end %>
-    <div class= "profile_header">
-      <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar " %>
-      <h1>  <%= @user.name %> </h1>
-    </div>
-    <div class="profile_content">
-      <ul>
-        <li> Adresse : <%= @user.address %>  </li>
-        <li> Presentation : <%= @user.presentation %> </li>
-        <li> Numéro de téléphone : <%= @user.phone_number %> </li>
-      </ul>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-12 col-lg-6">
-      <h2> Reviews </h2>
-      <% Review.all.each do |review| %>
-        <% if review.delivery.drone.user.id == @user.id  %>
-          <%= render "shared/review", review: review %>
-        <% end %>
-      <% end %>
-    </div>
-    <div class="col-12 col-lg-6">
-      <h2> Mes drones </h2>
-      <% @user.drones.all.each do |drone| %>
-          <%= render "shared/drone_card", drone: drone %>
-      <% end %>
-    </div>
-  </div>
 
-</div>
+<section>
+  <div class= "container">
+    <div class="row justify-content-center">
+        <div class = "profile col-6">   
+          <div class="profile_content justify-content-center">
+            <div class="p-4">
+              <div class="mb-3">
+                <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "mx-auto d-block rounded-circle img-fluid mb-3" %>
+                <h2><%= @user.name %></h2>
+              </div>
+              <ul>
+                <li class="mb-3"> <span>Ma bio :</span><br> <%= @user.presentation %> </li>
+                <li><span><i class="fas fa-map-marker-alt text-primary mr-2"></i></span> <%= @user.address %></li>
+                <li><span><i class="fas fa-phone-alt text-primary mr-2"></i></span> <%= @user.phone_number %></li>
+                <hr>
+              <% if current_user == @user %>
+              <%= link_to profile_edit_path , class: "btn btn-primary" do %>
+                  <i class="far fa-edit"></i> Modifier
+              <% end %>
+            <% end %>  
+              </ul>
+            </div>
+          </div>
+        </div>
+</section>
+
+<section>
+  <div class="col-6 mx-auto">
+    <h2> Mes drones </h2>
+        <% @user.drones.all.each do |drone| %>
+            <%= render "shared/drone_card", drone: drone %>
+        <% end %>
+        </div>
+      </div>
+  </div>
+</section>
+      
+
