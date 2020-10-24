@@ -19,7 +19,9 @@ class DronesController < ApplicationController
     end
 
     def show
+
       @delivery = Delivery.new
+
     end
 
     def new
