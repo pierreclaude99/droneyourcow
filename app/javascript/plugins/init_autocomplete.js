@@ -1,7 +1,7 @@
 import places from 'places.js';
 
 const initAutocomplete = () => {
-  const addressInput = document.getElementById('drone_address');
+  const addressInput = document.querySelector('#drone_address, #address');
   if (addressInput) {
     places({ container: addressInput });
   }
