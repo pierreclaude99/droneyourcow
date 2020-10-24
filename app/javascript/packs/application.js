@@ -27,7 +27,6 @@ import "bootstrap";
 import { initMapbox } from '../plugins/init_mapbox';
 import { initAutocomplete } from '../plugins/init_autocomplete'
 import { previewImageOnFileSelect } from '../plugins/photo_preview'
-import 'stylesheets/application'
 
 
 // Internal imports, e.g:
