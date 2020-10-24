@@ -37,10 +37,18 @@
                    <li class="list-inline-item"><i class="fas fa-location-arrow text-primary mr-2"></i> <%= drone.maximum_distance %> km </li>
                    <li class="list-inline-item"><i class="fas fa-weight-hanging text-primary mr-2">  </i><%= drone.carry_capacity %> kg</li>
                  </ul>
+
                  <p><i class="fas fa-map-marker-alt text-primary mr-2"></i> <%= drone.address %></p>
                  <p class="h3 list-inline-item"></p>
-                <p><%= image_tag  "https://kitt.lewagon.com/placeholder/users/random", class: "avatar mr-2" %> Drone proposé par :<b> <%= drone.user.name %></b> <span class="float-right h4 text-white p-2 rounded-lg bg-primary"><%= drone.delivery_price %> €</span> </p>
 
+
+                <% if drone.user.photo.attached? %>
+
+                  <p><%= cl_image_tag drone.user.photo.key, class: "avatar mr-2" %> Drone proposé par : <%= drone.user.name %></p>
+                <% else %>
+
+                  <p><%= image_tag  "https://kitt.lewagon.com/placeholder/users/random", class: "avatar mr-2" %> Drone proposé par : <%= drone.user.name %></p>
+                <% end %>
               </div>
           </div>
         </div>
@@ -49,6 +57,7 @@
       <% end %>
       </div>
      </div>
+
        <div class="col-6">
          <div id="map"
             style="width: 100%; height: 1000px;"
@@ -56,6 +65,7 @@
             data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
           </div>
       </div>
+
     </div>
   </div>
 </section>

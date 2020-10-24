@@ -6,7 +6,12 @@
         <% end %>
       <% end %>
     <div class= "profile_header">
-      <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar " %>
+      <% if @user.photo.attached? %>
+          <%= cl_image_tag @user.photo.key, class: "avatar" %>
+       <% else %>
+          <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar " %>
+       <% end %>
+
       <h1>  <%= @user.name %> </h1>
     </div>
     <div class="profile_content">
